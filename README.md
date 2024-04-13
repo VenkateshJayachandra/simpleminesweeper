@@ -1,44 +1,42 @@
-# Simple mine sweeper
+# Simple Minesweeper
 
-I havent concentrated on the UI, just looked at the design approach, so it is an simple console app :-D :-D
+This project is a basic console application for the game Minesweeper. 
+It's designed with a focus on extensibility, making it easy to adapt for different platforms or game levels.
 
-This is a very simple minesweeper, Please do not copy or re-use it, come up with your own. This is just a test approach to solve a problem.
+**Please note:** 
+This is a test project and is intended for reference only. 
+While you're welcome to look at the code and learn from it if it is useful or meaningful, please do not copy or reuse it directly. 
+It's always best to create your own solutions and learn through the process.
+Thank you for your understanding!
 
-This was my thinking. 
+## Design Approach
 
-1. Factory pattern to have multiple game level, so in future introducing another game level would be simple.
-2. Strategy pattern to play the game, now this is an console app but later we can introduce unity, or winforms or even xamarin, so by using strategy it is easy to implement another type of the same game.
-3. Command pattern to reload the objects(Console) as the user input is involved. 
+The application design is based on three main patterns:
 
+1. **Factory Pattern**: Facilitates the introduction of new game levels.
+2. **Strategy Pattern**: Allows the game to be adapted for different platforms (console, WinForms, Unity, Xamarin, etc.).
+3. **Command Pattern**: Handles user input and updates the game state accordingly.
 
-The logic is to create a mine field with some random mines, in my grid -1 refers the mine. 
+## Game Logic
 
-And this program will ask for user input from a never ending while loop until the user wins or hit a mine.
+The game starts by generating a grid of cells, with some cells randomly designated as mines (represented by -1). 
+The game then enters a loop, asking the user for input until they either win the game or hit a mine. 
+If a user reveals a cell with a value of zero, all adjacent cells are also revealed.
 
-As the user progress and if the value is zero of a opened cell then the adjusant cells are opened as well.
+## Setup
 
-This might have some logic issues but my approach was on the design and how to test it and how to easily enhance it. 
+To run the game, set `Minesweeper.App` as your startup project and provide your coordinates when prompted.
 
+## Project Structure
 
-# Set up 
+- **Minesweeper.App**: The main console application. It sets up dependencies and starts the game service.
+- **ApplicationCore**: Contains the core logic of the application, organized into several folders:
+  - **Services**: Contains the game service, which calls the appropriate strategy to run the game.
+  - **Strategies**: Contains different strategies for running the game, allowing it to be adapted for different platforms, such as (console, WinForms, Unity, Xamarin, etc.).
+  - **Factories**: Contains factories for creating different game levels. (Beginner, Complex or Intermediate)
+  - **Commands**: Contains commands for handling user input and updating the game state.
+  - **Exceptions**: Contains custom exceptions for handling errors based on the strategies used.
+- **Test**: Contains unit, functional, and integration tests for the application.
 
-Make the Minesweeper.App as your start up project and try passing your co-ordinates to run the game.
-
-# Files - Description
-
-## Minesweeper.App
-
-1. Console app, at startup DI is used build dependencies.
-2. Calls the game service 
-
-## ApplicationCore
-
-1. Service Folder - has the game service which inturn calls the mine strategy class, in this case it is a console app but this place can hold for other strategies like Winform, unity
-2. Strategies Folder - place to have your strategies like Winform, unity
-3. Factories Folder - place to have multiple game level like Beginner, Complex and intermediate
-4. Commands Folder - place to have the commands based on user input like reload the data in the console / window or where ever.
-5  Exceptions Folder - place to have our custom exception based on the strategies which is been used. 
-
-## Test
-
-1. Place to have your unit/functional/integration tests
+Please note that while the design and structure of this application are carefully thought out, there may still be some logic issues. 
+The focus of this project was on the design and how to test and enhance it.
