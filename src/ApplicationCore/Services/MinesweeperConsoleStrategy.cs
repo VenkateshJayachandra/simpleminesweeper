@@ -5,8 +5,6 @@ using Microsoft.Extensions.Logging;
 
 namespace ApplicationCore.Services
 {
-
-
     public class MinesweeperConsoleStrategy : IMineSweeperStrategy
     {
         IConsole console;
