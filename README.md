@@ -1,28 +1,25 @@
 # Simple mine sweeper
 
-I havent concentrated on UI, just a design approach, so it is an console app :-D :-D
+I havent concentrated on the UI, just looked at the design approach, so it is an simple console app :-D :-D
 
 This is a very simple minesweeper, Please do not copy or re-use it, come up with your own. This is just a test approach to solve a problem.
 
 This was my thinking. 
 
-1. Factory pattern for to have multiple game level, so introducing another game level would be simple.
-2. Strategy pattern to play the game, now this is an console app later we can introduce unity, or winforms or even xamarin that was the intentions.
-3. Command pattern to reload the window as the user input is involved. 
+1. Factory pattern to have multiple game level, so in future introducing another game level would be simple.
+2. Strategy pattern to play the game, now this is an console app but later we can introduce unity, or winforms or even xamarin, so by using strategy it is easy to implement another type of the same game.
+3. Command pattern to reload the objects(Console) as the user input is involved. 
 
 
-The logic is create a mine field with some random mines, in my grid -1 refers the mine. 
+The logic is to create a mine field with some random mines, in my grid -1 refers the mine. 
 
-And it will ask for user input from a never ending while loop.
+And this program will ask for user input from a never ending while loop until the user wins or hit a mine.
 
-Then if the user matches the mine co-ordinates boom.
-
-Else continue plus if the value is zero of a opened mine open the adjusant cells as well.
-
+As the user progress and if the value is zero of a opened cell then the adjusant cells are opened as well.
 
 This might have some logic issues but my approach was on the design and how to test it and how to easily enhance it. 
 
 
 # Set up 
 
-Make the Minesweeper.App as your start up project and give in your values when it starts up
+Make the Minesweeper.App as your start up project and try passing your co-ordinates to run the game.
