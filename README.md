@@ -4,10 +4,8 @@ This project is a basic console application for the game Minesweeper.
 It's designed with a focus on extensibility, making it easy to adapt for different platforms or game levels.
 
 **Please note:** 
-This is a test project and is intended for reference only. 
-While you're welcome to look at the code and learn from it if it is useful or meaningful, please do not copy or reuse it directly. 
-It's always best to create your own solutions and learn through the process.
-Thank you for your understanding!
+This is intended for reference only. 
+This is a test project and not intended for reuse without modification.
 
 ## Design Approach
 
