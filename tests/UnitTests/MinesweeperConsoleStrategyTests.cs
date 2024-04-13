@@ -1,6 +1,6 @@
 ﻿using ApplicationCore.Base;
 using ApplicationCore.Interfaces;
-using ApplicationCore.Services;
+using ApplicationCore.Strategies;
 using Microsoft.Extensions.Logging;
 using Moq;
 

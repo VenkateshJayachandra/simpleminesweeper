@@ -1,6 +1,7 @@
 ﻿using ApplicationCore.Base;
+using ApplicationCore.Services;
 
-namespace ApplicationCore.Services
+namespace ApplicationCore.Factories
 {
     public static class GameLevelFactory
     {

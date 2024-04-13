@@ -3,6 +3,10 @@ using ApplicationCore.Services;
 using Microsoft.Extensions.DependencyInjection;
 using ApplicationCore.Base;
 using Microsoft.Extensions.Logging;
+using ApplicationCore.Strategies;
+using ApplicationCore.Wrappers;
+using ApplicationCore.Factories;
+using ApplicationCore.Commands;
 
 namespace Minesweeper.Game
 {

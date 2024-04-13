@@ -3,7 +3,7 @@ using ApplicationCore.Exceptions;
 using ApplicationCore.Interfaces;
 using Microsoft.Extensions.Logging;
 
-namespace ApplicationCore.Services
+namespace ApplicationCore.Strategies
 {
     public class MinesweeperConsoleStrategy : IMineSweeperStrategy
     {
@@ -25,7 +25,7 @@ namespace ApplicationCore.Services
         public void PlayGame()
         {
             var isReady = InitializeGame();
-            
+
             if (isReady)
             {
                 logger.LogInformation("Game Initialized successfully");

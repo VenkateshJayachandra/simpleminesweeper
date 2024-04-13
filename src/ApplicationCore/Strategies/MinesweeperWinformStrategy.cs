@@ -1,6 +1,6 @@
 ﻿using ApplicationCore.Interfaces;
 
-namespace ApplicationCore.Services
+namespace ApplicationCore.Strategies
 {
     public class MinesweeperWinformStrategy : IMineSweeperStrategy
     {

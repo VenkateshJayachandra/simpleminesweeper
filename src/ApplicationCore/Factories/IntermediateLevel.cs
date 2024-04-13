@@ -1,6 +1,6 @@
 ﻿using ApplicationCore.Base;
 
-namespace ApplicationCore.Services
+namespace ApplicationCore.Factories
 {
     public class IntermediateLevel : GameLevel
     {

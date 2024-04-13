@@ -1,6 +1,6 @@
 ﻿using ApplicationCore.Base;
 
-namespace ApplicationCore.Services
+namespace ApplicationCore.Factories
 {
     public class BeginnerLevel : GameLevel
     {
@@ -28,7 +28,7 @@ namespace ApplicationCore.Services
             set { mines = value; }
         }
 
-        public BeginnerLevel(int rows = 5, int columns = 5,  int mines = 5)
+        public BeginnerLevel(int rows = 5, int columns = 5, int mines = 5)
         {
             Rows = rows;
             Columns = columns;

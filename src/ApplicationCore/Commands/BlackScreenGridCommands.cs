@@ -2,7 +2,7 @@
 using ApplicationCore.Interfaces;
 using System;
 
-namespace ApplicationCore.Services
+namespace ApplicationCore.Commands
 {
     public class BlackScreenGridCommands : ICommand
     {
