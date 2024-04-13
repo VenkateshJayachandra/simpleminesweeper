@@ -23,3 +23,22 @@ This might have some logic issues but my approach was on the design and how to t
 # Set up 
 
 Make the Minesweeper.App as your start up project and try passing your co-ordinates to run the game.
+
+# Files - Description
+
+## Minesweeper.App
+
+1. Console app, at startup DI is used build dependencies.
+2. Calls the game service 
+
+## ApplicationCore
+
+1. Service Folder - has the game service which inturn calls the mine strategy class, in this case it is a console app but this place can hold for other strategies like Winform, unity
+2. Strategies Folder - place to have your strategies like Winform, unity
+3. Factories Folder - place to have multiple game level like Beginner, Complex and intermediate
+4. Commands Folder - place to have the commands based on user input like reload the data in the console / window or where ever.
+5  Exceptions Folder - place to have our custom exception based on the strategies which is been used. 
+
+## Test
+
+1. Place to have your unit/functional/integration tests
