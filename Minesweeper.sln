@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{C6D82E1C-E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationCore", "src\ApplicationCore\ApplicationCore.csproj", "{31087125-74A6-454E-941F-498AFFE3A87A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Minesweeper", "src\App\Minesweeper.csproj", "{F5A1641F-3C91-407E-BCD7-F5471617AB00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Minesweeper.App", "src\App\Minesweeper.App.csproj", "{F5A1641F-3C91-407E-BCD7-F5471617AB00}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApplicationCoreTest", "tests\UnitTests\ApplicationCoreTest.csproj", "{1B1C4604-3895-4A4E-AE03-0C88531EE776}"
 EndProject

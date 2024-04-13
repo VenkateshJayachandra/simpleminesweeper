@@ -1,8 +1,7 @@
 ﻿using ApplicationCore.Interfaces;
 using ApplicationCore.Services;
-using System;
 using Microsoft.Extensions.DependencyInjection;
-using ApplicationCore.Entities;
+using ApplicationCore.Base;
 
 namespace Minesweeper.Game
 {
@@ -10,18 +9,20 @@ namespace Minesweeper.Game
     {
         static void Main()
         {
-            // Set up DI container
+            // Set up DI container 
+            // Resolving the GameLevel in singleton as it is shared with both IMineSweeperStrategy and ICommand
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IConsole, ConsoleWrapper>()
-                .AddSingleton(new MinesweeperOptions { Rows = 5, Cols = 5, Mines = 5 })
-                .AddTransient<IGameStrategy, MinesweeperStrategy>()
+                .AddSingleton<GameLevel>(sp => new SimpleLevel(3, 3, 3)) // Register GameLevel as a singleton
+                .AddTransient<ICommand>(sp => new BlackScreenGridCommands(sp.GetService<GameLevel>(), sp.GetService<IConsole>())) // Resolve dependencies manually
+                .AddTransient<IMineSweeperStrategy>(sp => new MinesweeperConsoleStrategy(sp.GetService<GameLevel>(), sp.GetService<ICommand>(), sp.GetService<IConsole>())) // Resolve dependencies manually
+                .AddTransient<GameService>()
                 .BuildServiceProvider();
 
-            // Resolve IGameStrategy from DI container
-            var gameStrategy = serviceProvider.GetService<IGameStrategy>();
-
-            var gameService = new GameService(gameStrategy);
+            // Resolve GameService from DI container
+            var gameService = serviceProvider.GetService<GameService>();
             gameService.PlayGame();
+
         }
     }
 }

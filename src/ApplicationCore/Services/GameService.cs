@@ -4,9 +4,9 @@ namespace ApplicationCore.Services
 {
     public class GameService
     {
-        private readonly IGameStrategy _gameStrategy;
+        private readonly IMineSweeperStrategy _gameStrategy;
 
-        public GameService(IGameStrategy gameStrategy)
+        public GameService(IMineSweeperStrategy gameStrategy)
         {
             _gameStrategy = gameStrategy;
         }
