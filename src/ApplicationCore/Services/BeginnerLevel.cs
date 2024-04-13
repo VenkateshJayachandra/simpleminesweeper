@@ -2,7 +2,7 @@
 
 namespace ApplicationCore.Services
 {
-    public class SimpleLevel : GameLevel
+    public class BeginnerLevel : GameLevel
     {
         private int rows;
 
@@ -28,7 +28,7 @@ namespace ApplicationCore.Services
             set { mines = value; }
         }
 
-        public SimpleLevel(int rows = 5, int columns = 5,  int mines = 5)
+        public BeginnerLevel(int rows = 5, int columns = 5,  int mines = 5)
         {
             Rows = rows;
             Columns = columns;

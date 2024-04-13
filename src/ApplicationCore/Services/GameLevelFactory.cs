@@ -11,7 +11,7 @@ namespace ApplicationCore.Services
                 case "Intermediate":
                     return new IntermediateLevel();
                 default:
-                    return new SimpleLevel();
+                    return new BeginnerLevel();
             }
         }
     }

@@ -17,7 +17,7 @@ namespace Minesweeper.Game
             // for that user 
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IConsole, ConsoleWrapper>()
-                .AddSingleton<GameLevel>(sp => new SimpleLevel(3, 3, 3)) // Register GameLevel as a singleton
+                .AddSingleton<GameLevel>(sp => new BeginnerLevel(3, 3, 3)) // Register GameLevel as a singleton
                 .AddTransient<ICommand>(sp => new BlackScreenGridCommands(sp.GetService<GameLevel>(), sp.GetService<IConsole>())) // Resolve dependencies manually
                 .AddTransient<IMineSweeperStrategy>(sp => new MinesweeperConsoleStrategy(sp.GetService<GameLevel>(), 
                                                                 sp.GetService<ICommand>(),

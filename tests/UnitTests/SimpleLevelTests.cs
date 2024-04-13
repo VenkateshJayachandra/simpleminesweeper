@@ -5,7 +5,7 @@ public class SimpleLevelTests
     [Fact]
     public void GenerateFieldWithMines_CreatesCorrectNumberOfMines()
     {
-        var level = new SimpleLevel();
+        var level = new BeginnerLevel();
 
         var field = level.GenerateFieldWithMines();
 
