@@ -1,9 +1,11 @@
 ﻿using ApplicationCore.Base;
+using ApplicationCore.Exceptions;
 using ApplicationCore.Interfaces;
 using Microsoft.Extensions.Logging;
 
 namespace ApplicationCore.Services
 {
+
 
     public class MinesweeperConsoleStrategy : IMineSweeperStrategy
     {
@@ -53,16 +55,21 @@ namespace ApplicationCore.Services
 
                 console.Write("X: ");
 
-                int row = int.Parse(console.ReadLine());
+                if (!int.TryParse(console.ReadLine(), out int row))
+                {
+                    throw new GameUserInputFormatException("Invalid input. Please enter a number.", logger);
+                }
 
                 console.Write("Y: ");
 
-                int col = int.Parse(console.ReadLine());
+                if (!int.TryParse(console.ReadLine(), out int col))
+                {
+                    throw new GameUserInputFormatException("Invalid input. Please enter a number.", logger);
+                }
 
                 if (row < 0 || row >= gameLevel.Rows || col < 0 || col >= gameLevel.Columns)
                 {
-                    logger.LogInformation("Coordinates are out of range");
-                    throw new ArgumentOutOfRangeException("Coordinates are out of range.");
+                    throw new GameArgumentOutOfRangeExceptionException("Coordinates are out of range.", logger);
                 }
 
                 bool continueGame = ProcessCellBussinessLogicSpecificToThisClass(row, col, ref revealedCells, safeCells);
@@ -76,6 +83,7 @@ namespace ApplicationCore.Services
             {
                 logger.LogInformation("Boom! You hit a mine.");
                 console.WriteLine("Boom! You hit a mine.");
+
                 consoleGridCommands.RevealAll();
                 blown = true;
                 return false;
