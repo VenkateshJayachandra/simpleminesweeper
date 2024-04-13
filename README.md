@@ -1,4 +1,6 @@
-# simpleminesweeper
+# Simple mine sweeper
+
+I havent concentrated on UI, just a design approach, so it is an console app :-D :-D
 
 This is a very simple minesweeper, Please do not copy or re-use it, come up with your own. This is just a test approach to solve a problem.
 
