@@ -1,5 +1,6 @@
 ﻿using ApplicationCore.Base;
 using ApplicationCore.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace ApplicationCore.Services
 {
@@ -9,12 +10,14 @@ namespace ApplicationCore.Services
         IConsole console;
         GameLevel gameLevel;
         ICommand consoleGridCommands;
+        private readonly ILogger<MinesweeperConsoleStrategy> logger;
 
-        public MinesweeperConsoleStrategy(GameLevel gameLevel, ICommand consoleGridCommands, IConsole console)
+        public MinesweeperConsoleStrategy(GameLevel gameLevel, ICommand consoleGridCommands, IConsole console, ILogger<MinesweeperConsoleStrategy> logger)
         {
             this.gameLevel = gameLevel;
             this.console = console;
             this.consoleGridCommands = consoleGridCommands;
+            this.logger = logger;
         }
 
         public bool blown { get; set; }
@@ -22,8 +25,10 @@ namespace ApplicationCore.Services
         public void PlayGame()
         {
             var isReady = InitializeGame();
+            
             if (isReady)
             {
+                logger.LogInformation("Game Initialized successfully");
                 GameLoop();
             }
         }
@@ -56,6 +61,7 @@ namespace ApplicationCore.Services
 
                 if (row < 0 || row >= gameLevel.Rows || col < 0 || col >= gameLevel.Columns)
                 {
+                    logger.LogInformation("Coordinates are out of range");
                     throw new ArgumentOutOfRangeException("Coordinates are out of range.");
                 }
 
@@ -68,6 +74,7 @@ namespace ApplicationCore.Services
         {
             if (gameLevel.Grid[row, col] == -1)
             {
+                logger.LogInformation("Boom! You hit a mine.");
                 console.WriteLine("Boom! You hit a mine.");
                 consoleGridCommands.RevealAll();
                 blown = true;
@@ -85,6 +92,7 @@ namespace ApplicationCore.Services
             // Check if all safe cells are revealed
             if (revealedCells == safeCells)
             {
+                logger.LogInformation("Congratulations! You've cleared all safe cells.");
                 console.WriteLine("Congratulations! You've cleared all safe cells.");
                 return false;
             }

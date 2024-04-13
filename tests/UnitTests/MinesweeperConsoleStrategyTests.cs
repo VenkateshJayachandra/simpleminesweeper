@@ -1,25 +1,11 @@
-using ApplicationCore.Base;
+﻿using ApplicationCore.Base;
 using ApplicationCore.Interfaces;
 using ApplicationCore.Services;
+using Microsoft.Extensions.Logging;
 using Moq;
 
-public class GameServiceTests
-{
-    [Fact]
-    public void PlayGame_CallsStrategyPlayGame()
-    {
-        var strategy = new Mock<IMineSweeperStrategy>();
-        var service = new GameService(strategy.Object);
-
-        service.PlayGame();
-        strategy.Verify(s => s.PlayGame(), Times.Once);
-    }
-}
-
 public class MinesweeperConsoleStrategyTests
-{
-
-    
+{   
     [Fact]
     public void PlayGame_InitializesGameAndRunsGameLoop()
     {
@@ -27,7 +13,8 @@ public class MinesweeperConsoleStrategyTests
         var gameLevel = new Mock<GameLevel>();
         
         var commands = new Mock<ICommand>();
-        var strategy = new MinesweeperConsoleStrategy(gameLevel.Object, commands.Object, console.Object);
+        var logger = new Mock<ILogger<MinesweeperConsoleStrategy>>();
+        var strategy = new MinesweeperConsoleStrategy(gameLevel.Object, commands.Object, console.Object, logger.Object);
 
         int[,] testGrid = new int[,]
         {
@@ -57,7 +44,8 @@ public class MinesweeperConsoleStrategyTests
         var gameLevel = new Mock<GameLevel>();
 
         var commands = new Mock<ICommand>();
-        var strategy = new MinesweeperConsoleStrategy(gameLevel.Object, commands.Object, console.Object);
+        var logger = new Mock<ILogger<MinesweeperConsoleStrategy>>();
+        var strategy = new MinesweeperConsoleStrategy(gameLevel.Object, commands.Object, console.Object, logger.Object);
 
         int[,] testGrid = new int[,]
         {
@@ -86,7 +74,8 @@ public class MinesweeperConsoleStrategyTests
         var gameLevel = new Mock<GameLevel>();
 
         var commands = new Mock<ICommand>();
-        var strategy = new MinesweeperConsoleStrategy(gameLevel.Object, commands.Object, console.Object);
+        var logger = new Mock<ILogger<MinesweeperConsoleStrategy>>();
+        var strategy = new MinesweeperConsoleStrategy(gameLevel.Object, commands.Object, console.Object, logger.Object);
 
         int[,] testGrid = new int[,]
         {
@@ -121,30 +110,5 @@ public class MinesweeperConsoleStrategyTests
 
         Assert.True(strategy.InitializeGame());
         Assert.False(strategy.blown);
-    }
-}
-
-public class SimpleLevelTests
-{
-    [Fact]
-    public void GenerateFieldWithMines_CreatesCorrectNumberOfMines()
-    {
-        var level = new SimpleLevel();
-
-        var field = level.GenerateFieldWithMines();
-
-        int mineCount = 0;
-        for (int i = 0; i < level.Rows; i++)
-        {
-            for (int j = 0; j < level.Columns; j++)
-            {
-                if (field[i, j] == -1)
-                {
-                    mineCount++;
-                }
-            }
-        }
-
-        Assert.Equal(level.Mines, mineCount);
     }
 }
