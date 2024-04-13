@@ -23,3 +23,6 @@ Else continue plus if the value is zero of a opened mine open the adjusant cells
 This might have some logic issues but my approach was on the design and how to test it and how to easily enhance it. 
 
 
+# Set up 
+
+Make the Minesweeper.App as your start up project and give in your values when it starts up
